@@ -4,7 +4,7 @@ Generic functions library
 
 ## Installation
 
-Use the package manager npm to install foobar.
+Use the package manager npm to install utils.
 
 ```bash
 npm install @ijx/utils
