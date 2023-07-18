@@ -1,5 +1,5 @@
 /**
- * Last modified: 01/07/2023
+ * Last modified: 18/07/2023
  */
 
 import fs from "fs"
@@ -164,11 +164,6 @@ Object.defineProperties(String.prototype, {
 	"suspensivos": { value: function(max, chars="...") { return this.length > max ? this.substring(0, max+chars.length)+chars : this; }, configurable: true, writable: true },
 });
 
-// Number
-Object.defineProperties(Number.prototype, {
-	"zeroPad": { value: function(n = 2) { return (this+"").zeroPad(n) }, configurable: true, writable: true }
-});
-
 // Date
 Object.defineProperties(Date.prototype, {
 	"format": { value: function(format="d/m/Y") {
@@ -296,7 +291,7 @@ export const makeid = (length=5) => {
  * @param num: int comprendido en [0, 255]
  * @return: string con el dato en hexadecimal, ej: 0d
  */
-export function decToHex(num) {
+export const decToHex = num => {
 	var cad = parseInt(num).toString(16);
 	return (cad.length === 1) ? `0${cad}` : `${cad}`;
 }
@@ -312,14 +307,14 @@ export const base64_decode = data => Buffer.from(data, 'base64').toString('ascii
  * @param {String}  type  El tipo de ajuste (round, floor, ceil).
  * @returns {Number} El valor ajustado.
  */
-export function decimalAdjust(value, exp=0, type="round") {
+export const decimalAdjust = (value, exp=0, type="round") => {
 	if(!["round", "ceil", "floor"].includes(type))
 		throw new Error("Invalid type");
 	const mult = Math.pow(10, exp >=0 ? parseInt(exp) : 0);
 	return Math[type](value * mult) / mult;
 }
 
-export function secondsToDhms(seconds) {
+export const secondsToDhms = seconds => {
 	seconds = Number(seconds);
 	return {
 		d: Math.floor(seconds / (3600*24)),
