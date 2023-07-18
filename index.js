@@ -164,6 +164,11 @@ Object.defineProperties(String.prototype, {
 	"suspensivos": { value: function(max, chars="...") { return this.length > max ? this.substring(0, max+chars.length)+chars : this; }, configurable: true, writable: true },
 });
 
+// Number
+Object.defineProperties(Number.prototype, {
+	"zeroPad": { value: function(n = 2) { return (this+"").zeroPad(n) }, configurable: true, writable: true }
+});
+
 // Date
 Object.defineProperties(Date.prototype, {
 	"format": { value: function(format="d/m/Y") {

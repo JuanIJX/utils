@@ -18,13 +18,13 @@ import "@ijx/utils"
 
 ## List of functions
 
--   Array
+- Array
 	- filter2(func)
 	- deleteElement(element)
 	- concat2(...arrays)
 	- mapAsync(func)
 	- hasDuplicates()
--   Object
+- Object
 	- getKeyByValue(value)
 	- clone()
 	- assign(obj)
@@ -32,7 +32,7 @@ import "@ijx/utils"
 	- map(fn, thisArg)
 	- getName()
 	- getMethods()
--   String
+- String
 	- camelToSnakeCase()
 	- camelCase(sep="_", type=true)
 	- rellenar(size, character=' ')
@@ -40,9 +40,11 @@ import "@ijx/utils"
 	- getExt()
 	- zeroPad(n = 2)
 	- suspensivos(max, chars="...")
--   Date
+- Number
+	- zeroPad(n = 2)
+- Date
 	- format(format="d/m/Y")
--   Functions
+- Functions
 	- isInteger(num)
 	- isFloat(num)
 	- isClass(entity)
