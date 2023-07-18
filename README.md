@@ -41,7 +41,6 @@ import "@ijx/utils"
 	- zeroPad(n = 2)
 	- suspensivos(max, chars="...")
 -   Date
-	- get()
 	- format(format="d/m/Y")
 -   Functions
 	- isInteger(num)
