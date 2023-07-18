@@ -5,7 +5,6 @@
 import fs from "fs"
 import url from "url"
 import path from "path"
-import { exec } from "child_process";
 
 
 
@@ -329,8 +328,6 @@ export function secondsToDhms(seconds) {
 		s: Math.floor(seconds % 60)
 	};
 }
-
-export const ejc = cmd => new Promise((resolve, reject) => exec(cmd, function(err, stdout, stderr) { err ? reject(err) : resolve({ stdout, stderr }); }));
 export const stringifyNoCircular = (obj, space=null) => {
 	var cache = [];
 	return JSON.stringify(obj, (_, value) => {
