@@ -2,9 +2,9 @@
  * Last modified: 18/07/2023
  */
 
-import fs from "fs"
-import url from "url"
-import path from "path"
+import fs from "fs" // Nativas
+import url from "url" // Nativas
+import path from "path" // Nativas
 
 
 
