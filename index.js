@@ -1,8 +1,8 @@
 /**
- * Last modified: 18/07/2023
+ * Last modified: 20/07/2023
  */
 
-import fs from "fs" // Nativas
+import fs, { constants } from "fs" // Nativas
 import url from "url" // Nativas
 import path from "path" // Nativas
 
@@ -349,3 +349,7 @@ export const createDirs = src => {
 		}
 	}
 }
+
+export const readable = src => { try { fs.accessSync(src, constants.R_OK); return true; } catch (error) { return false; } }
+export const writable = src => { try { fs.accessSync(src, constants.R_OK | constants.W_OK); return true; } catch (error) { return false; } }
+export const readableAndWritable = src => { try { fs.accessSync(src, constants.R_OK | constants.W_OK); return true; } catch (error) { return false; } }

@@ -66,3 +66,6 @@ import "@ijx/utils"
 	- secondsToDhms(seconds)
 	- stringifyNoCircular(obj, space=null)
 	- createDirs(src)
+	- readable
+	- writable
+	- readableAndWritable
