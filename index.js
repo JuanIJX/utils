@@ -363,9 +363,7 @@ export const readArgs = (validArgs, initChar="-") => {
 	const config = {};
 
 	for (let i = 0; i < args.length; i++) {
-		if(args[i].indexOf(initChar) != 0)
-			continue;
-
+		if(args[i].indexOf(initChar) != 0) continue;
 		const busq = args[i].substring(initChar.length);
 		if(validArgs.hasOwnProperty(busq)) {
 			if(validArgs[busq] == 0)
@@ -386,5 +384,8 @@ export const readArgs = (validArgs, initChar="-") => {
 			}
 		}
 	}
+	for (const key in validArgs)
+		if(!config.hasOwnProperty(key) && validArgs[key] == 0)
+			config[key] = false;
 	return config;
 }
