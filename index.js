@@ -358,7 +358,7 @@ export const readableAndWritable = src => { try { fs.accessSync(src, constants.R
  * @param {string} initChar Caracter inicial de los parámetros, default -
  * @returns Objeto con los datos leídos
  */
-export const readArgs = (validArgs, initChar="-") => {
+export const readArgs = (validArgs, initChar="-", defaultBool = false) => {
 	const args = process.argv.slice(2);
 	const config = {};
 
@@ -384,8 +384,9 @@ export const readArgs = (validArgs, initChar="-") => {
 			}
 		}
 	}
-	for (const key in validArgs)
-		if(!config.hasOwnProperty(key) && validArgs[key] == 0)
-			config[key] = false;
+	if(defaultBool)
+		for (const key in validArgs)
+			if(!config.hasOwnProperty(key) && validArgs[key] == 0)
+				config[key] = false;
 	return config;
 }
