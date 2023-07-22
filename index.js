@@ -1,22 +1,10 @@
 /**
- * Last modified: 20/07/2023
+ * Last modified: 22/07/2023
  */
 
 import fs, { constants } from "fs" // Nativas
 import url from "url" // Nativas
 import path from "path" // Nativas
-
-
-
-// Private functions
-
-function getZero(n = 0) {
-	let cad = '';
-	for (let i = 0; i < n; i++)
-		cad += '0';
-	return cad;
-}
-
 
 
 // PROTOTYPES
@@ -160,7 +148,11 @@ Object.defineProperties(String.prototype, {
 			return this.substring(pos+1);
 		return this;
 	}, configurable: true, writable: true },
-	"zeroPad": { value: function(n = 2) { return (getZero(n)+this).slice(-1 * (n < this.length ? this.length : n)); }, configurable: true, writable: true },
+	"zeroPad": { value: function(n = 2) {
+		let cad = '';
+		for (let i = 0; i < n; i++) cad += '0';
+		return (cad+this).slice(-1 * (n < this.length ? this.length : n));
+	}, configurable: true, writable: true },
 	"suspensivos": { value: function(max, chars="...") { return this.length > max ? this.substring(0, max+chars.length)+chars : this; }, configurable: true, writable: true },
 });
 
@@ -353,3 +345,46 @@ export const createDirs = src => {
 export const readable = src => { try { fs.accessSync(src, constants.R_OK); return true; } catch (error) { return false; } }
 export const writable = src => { try { fs.accessSync(src, constants.R_OK | constants.W_OK); return true; } catch (error) { return false; } }
 export const readableAndWritable = src => { try { fs.accessSync(src, constants.R_OK | constants.W_OK); return true; } catch (error) { return false; } }
+
+/**
+ * Lectura de parámetros de arranque al ejecutar un script.
+ * Ejemplo:
+ * Arranque: ./script.js a b --debug c --ip d e --port 32.4
+ * validArgs = { debug: 0, ip: 1, port: 2 }
+ * salida = { debug: true, ip: 'd', port: 32 }
+ * 
+ * @param {object} validArgs Objeto con los datos, los keys serán el nombre
+ * para buscar y el valor será el tipo. 0 = boolean, 1 = string, 2 = integer, 3 = float
+ * @param {string} initChar Caracter inicial de los parámetros, default -
+ * @returns Objeto con los datos leídos
+ */
+export const readArgs = (validArgs, initChar="-") => {
+	const args = process.argv.slice(2);
+	const config = {};
+
+	for (let i = 0; i < args.length; i++) {
+		if(args[i].indexOf(initChar) != 0)
+			continue;
+
+		const busq = args[i].substring(initChar.length);
+		if(validArgs.hasOwnProperty(busq)) {
+			if(validArgs[busq] == 0)
+				config[busq] = true;
+			else {
+				if(i == args.length - 1)
+					throw new Error(`Falta el valor de '${busq}'`);
+
+				config[busq] = args[++i];
+				switch (validArgs[busq]) {
+					case 2:
+						config[busq] = parseInt(config[busq]);
+						break;
+					case 3:
+						config[busq] = parseFloat(config[busq]);
+						break;
+				}
+			}
+		}
+	}
+	return config;
+}

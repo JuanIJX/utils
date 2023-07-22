@@ -69,3 +69,4 @@ import "@ijx/utils"
 	- readable
 	- writable
 	- readableAndWritable
+	- readArgs
