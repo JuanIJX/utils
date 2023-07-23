@@ -1,5 +1,5 @@
 /**
- * Last modified: 22/07/2023
+ * Last modified: 23/07/2023
  */
 
 import fs, { constants } from "fs" // Nativas
@@ -153,7 +153,15 @@ Object.defineProperties(String.prototype, {
 		for (let i = 0; i < n; i++) cad += '0';
 		return (cad+this).slice(-1 * (n < this.length ? this.length : n));
 	}, configurable: true, writable: true },
-	"suspensivos": { value: function(max, chars="...") { return this.length > max ? this.substring(0, max+chars.length)+chars : this; }, configurable: true, writable: true },
+	"suspensivos": { value: function(max, chars="...") {
+		return this.length > max ? this.substring(0, max+chars.length)+chars : this;
+	}, configurable: true, writable: true },
+	"replaceMultiple": { value: function(replaces, style="${&%*}") {
+		let cad = this;
+		for (const key in replaces)
+			cad = cad.replaceAll(style.replace(`&%*`, key), replaces[key]);
+		return cad;
+	}, configurable: true, writable: true },
 });
 
 // Number
