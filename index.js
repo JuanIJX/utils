@@ -3,7 +3,7 @@
  */
 
 import fs, { constants } from "fs" // Nativas
-import url from "url" // Nativas
+import { fileURLToPath } from "url" // Nativas
 import path from "path" // Nativas
 
 
@@ -280,7 +280,8 @@ export const thread = func => new Promise((async resolve => await wait().then(as
 export const echo = cad => cad ? console.log(cad) : console.log();
 export const getTimestamp = () => Math.floor(Func.getSysMs() / 1000);
 export const getDate = (...t) => new Date(...t);
-export const getRelative = (metaurl, ...file) => path.join(path.relative(process.cwd(), path.dirname(url.fileURLToPath(metaurl))), ...file);
+export const getRelative = (metaurl, ...file) => path.join(path.relative(process.cwd(), path.dirname(fileURLToPath(metaurl))), ...file);
+export const getImportPath = metaurl => path.dirname(fileURLToPath(metaurl));
 
 export const makeid = (length=5) => {
 	const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';

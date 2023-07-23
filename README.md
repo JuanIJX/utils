@@ -58,6 +58,7 @@ import "@ijx/utils"
 	- getTimestamp()
 	- getDate(...t)
 	- getRelative(metaurl, ...file)
+	- getImportPath(metaurl)
 	- makeid(length=5)
 	- decToHex(num)
 	- base64_encode(data)

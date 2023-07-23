@@ -1,6 +1,6 @@
 {
   "name": "@ijx/utils",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Utilidades varias",
   "main": "index.js",
   "type": "module",
