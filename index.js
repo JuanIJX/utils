@@ -406,3 +406,5 @@ export const readArgs = (validArgs, initChar="-", defaultBool = false) => {
 				config[key] = false;
 	return config;
 }
+
+export const replaceSqlValues = (sqlQuery, data) => data.reduce((previous, current) => previous.replace("?", current == null ? "null" : `'${current}'`), sqlQuery);
