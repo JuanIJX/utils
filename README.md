@@ -66,8 +66,9 @@ import "@ijx/utils"
 	- decimalAdjust(value, exp=0, type="round")
 	- secondsToDhms(seconds)
 	- stringifyNoCircular(obj, space=null)
-	- createDirs(src)
-	- readable
-	- writable
-	- readableAndWritable
-	- readArgs
+	- createDirs(src: string)
+	- readable(src: string)
+	- writable(src: string)
+	- readableAndWritable(src: string)
+	- readArgs(validArgs: object, initChar: string, defaultBool: boolean)
+	- replaceSqlValues(sqlQuery: string, data: (string | number | null)[])
