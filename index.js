@@ -90,6 +90,17 @@ Object.defineProperties(Object.prototype, {
 			}
 		return this;
 	}, configurable: true, writable: true },
+	"forEach": { value: function(fn, thisArg) {
+		if (typeof fn !== "function")
+			throw new TypeError(`${fn} is not a function`);
+		if (thisArg !== void 0)
+			fn = fn.bind(thisArg);
+		for (const key in this)
+			if(Object.hasOwnProperty.call(this, key))
+				fn(this[key], key, this);
+		return this;
+
+	}, configurable: true, writable: true },
 	"map": { value: function(fn, thisArg) {
 		if (typeof fn !== "function")
 			throw new TypeError(`${fn} is not a function`);

@@ -29,6 +29,7 @@ import "@ijx/utils"
 	- clone()
 	- assign(obj)
 	- defObject(fuente)
+	- forEach(fn, thisArg)
 	- map(fn, thisArg)
 	- getName()
 	- getMethods()
