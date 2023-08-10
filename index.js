@@ -294,7 +294,7 @@ export const getTimestamp = () => Math.floor(Func.getSysMs() / 1000);
 export const getDate = (...t) => new Date(...t);
 export const getRelative = (metaurl, ...file) => path.join(path.relative(process.cwd(), path.dirname(fileURLToPath(metaurl))), ...file);
 export const getImportPath = metaurl => path.dirname(fileURLToPath(metaurl));
-export const pathToImport = (metaurl, ruta) => path.relative(getImportPath(metaurl), ruta).replaceAll("\\", "/");
+export const pathToImport = (metaurl, ruta) => "./" + path.relative(getImportPath(metaurl), ruta).replaceAll("\\", "/");
 
 export const makeid = (length=5) => {
 	const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
