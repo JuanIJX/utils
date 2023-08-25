@@ -11,9 +11,6 @@ declare module '@ijx/utils' {
 	export function echo(cad: string): void;
 	export function getTimestamp(): number;
 	export function getDate(...t: any): Date;
-	export function getRelative(metaurl: string, file: string[]): string;
-	export function getImportPath(metaurl: string): string;
-	export function pathToImport(metaurl: string, ruta: string): string;
 	export function makeid(length: number): string;
 	/**
 	 * Convierte un int en string hexadecimal
@@ -35,11 +32,6 @@ declare module '@ijx/utils' {
 	export function decimalAdjust(value: number, exp: number, type: string): number;
 	export function secondsToDhms(seconds: number): object;
 	export function stringifyNoCircular(obj: object, space: string|null): string;
-	export function createDirs(src: string): boolean;
-	export function readable(src: string): boolean;
-	export function writable(src: string): boolean;
-	export function readableAndWritable(src: string): boolean;
-	export function existsAsync(src: string): Promise<boolean>;
 
 	/**
 	 * Lectura de parámetros de arranque al ejecutar un script.
@@ -55,4 +47,15 @@ declare module '@ijx/utils' {
 	 */
 	export function readArgs(validArgs: object, initChar: string, defaultBool: boolean): object;
 	export function replaceSqlValues(sqlQuery: string, data: (string | number | null)[]): string;
+
+
+	// Need import npm modules
+	export function createDirs(src: string): boolean;
+	export function readable(src: string): boolean;
+	export function writable(src: string): boolean;
+	export function readableAndWritable(src: string): boolean;
+	export function existsAsync(src: string): Promise<boolean>;
+	export function getRelative(metaurl: string, file: string[]): string;
+	export function getImportPath(metaurl: string): string;
+	export function pathToImport(metaurl: string, ruta: string): string;
 }
