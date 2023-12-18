@@ -58,4 +58,5 @@ declare module '@ijx/utils' {
 	export function getRelative(metaurl: string, file: string[]): string;
 	export function getImportPath(metaurl: string): string;
 	export function pathToImport(metaurl: string, ruta: string): string;
+	export function exec(command: string): Promise<string | Buffer>;
 }

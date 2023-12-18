@@ -2,10 +2,11 @@
  * Last modified: 25/08/2023
  */
 
-import fs, { constants } from "fs"
-import fsPromise from "fs/promises"
-import { fileURLToPath } from "url"
 import path from "path"
+import fsPromise from "fs/promises"
+import fs, { constants } from "fs"
+import { fileURLToPath } from "url"
+import { exec as exec2 } from "child_process"
 
 export * from "@ijx/utils-base"
 
@@ -31,3 +32,12 @@ export const existsAsync = async src => { try { await fsPromise.access(src); ret
 export const getRelative = (metaurl, ...file) => path.join(path.relative(process.cwd(), path.dirname(fileURLToPath(metaurl))), ...file);
 export const getImportPath = metaurl => path.dirname(fileURLToPath(metaurl));
 export const pathToImport = (metaurl, ruta) => "./" + path.relative(getImportPath(metaurl), ruta).replaceAll("\\", "/");
+export const exec = command => {
+	return new Promise((resolve, reject) => {
+		exec2(command, (error, stdout, stderr) => {
+			if (error)		reject(error);
+			else if(stderr)	reject(stderr);
+			else			resolve(stdout);
+		})
+	});
+}

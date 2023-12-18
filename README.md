@@ -77,3 +77,4 @@ import "@ijx/utils"
 - getRelative(metaurl, ...file)
 - getImportPath(metaurl)
 - pathToImport(metaurl, ruta)
+- exec(command: string)
