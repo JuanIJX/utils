@@ -17,5 +17,8 @@
   "license": "ISC",
   "dependencies": {
     "@ijx/utils-base": "^1.0.20"
+  },
+  "devDependencies": {
+    "@types/node": "^22.8.7"
   }
 }
