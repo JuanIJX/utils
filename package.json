@@ -16,7 +16,7 @@
   "author": "JuanIJX",
   "license": "ISC",
   "dependencies": {
-    "@ijx/utils-base": "^1.0.20"
+    "@ijx/utils-base": "^1.0.21"
   },
   "devDependencies": {
     "@types/node": "^22.8.7"
