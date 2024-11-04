@@ -14,6 +14,6 @@
   "author": "JuanIJX",
   "license": "ISC",
   "dependencies": {
-    "@ijx/utils-base": "^1.0.18"
+    "@ijx/utils-base": "^1.0.20"
   }
 }
