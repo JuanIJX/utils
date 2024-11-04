@@ -1,4 +1,4 @@
-declare module '@ijx/utils' {	
+declare module '@ijx/utils' {
 	export function isInteger(num: any): boolean;
 	export function isFloat(num: any): boolean;
 	export function isClass(entity: any): boolean;
